@@ -1,0 +1,14 @@
+{
+    "name": "artfulbatina/creativestudios",
+    "autoload": {
+        "psr-4": {
+            "Artfulbatina\\Creativestudios\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Cédric Batina"
+        }
+    ],
+    "require": {}
+}
