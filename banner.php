@@ -6,6 +6,6 @@
 <div class="container-fluid m-auto">
  <h3 class="text-center"><strong>@rtful Batina Creative Studios est une agence de communication et de marketing numérique à Gradignan</strong></h3>
 </div><br>
-<p class="creation_date text-center"> <?= $formatter->format(new DateTime()) ?></p>
+<p class="creation_date text-center"> <?php $formatter->format(new DateTime()) ?></p>
 
 <hr><br>

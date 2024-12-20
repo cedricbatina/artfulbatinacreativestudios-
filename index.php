@@ -1,6 +1,6 @@
 <?php
 //session_start();
-//require "./database_connexion.php";
+require "./database_connexion.php";
 
 require "functions.php";
 //check_login();

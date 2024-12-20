@@ -1,6 +1,13 @@
 <?php
+//require_once 'vendor/autoload.php';
 
 require "./database_connexion.php";
+
+//use Carbon\Carbon;
+
+//$date = Carbon::now();
+//$date->locale('fr_FR');
+//echo $date->isoFormat('LLLL'); // Affiche la date en français
 
 
 // Définir la date et l'heure actuelles
