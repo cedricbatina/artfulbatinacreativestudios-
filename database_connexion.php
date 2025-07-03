@@ -1,22 +1,20 @@
 <?php
-$con = mysqli_connect('localhost', 'cedricbatina', 'Elijahbatina2008', 'abcstudios');
+require_once __DIR__ . '/vendor/autoload.php';
 
-/*const MYSQL_HOST = 'localhost';
-const MYSQL_PORT = 80;
-const MYSQL_NAME = 'blagues';
-const MYSQL_USER = 'cedricbatina';
-const MYSQL_PASSWORD = 'Elijahbatina2008';
+use Dotenv\Dotenv;
 
-try {
- $mysqlClient = new PDO(
-  sprintf('mysql:host=%s;dbname=%s;port=%s', MYSQL_HOST, MYSQL_NAME, MYSQL_PORT),
-  MYSQL_USER,
-  MYSQL_PASSWORD
- );
- $mysqlClient->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (Exception $exception) {
- die('Erreur : ' . $exception->getMessage());
-}*/
+$dotenv = Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
+// Connexion à la base de données
+$db_host = $_ENV['DB_HOST'];
+$db_user = $_ENV['DB_USER'];
+$db_password = $_ENV['DB_PASSWORD'];
+$db_name = $_ENV['DB_NAME'];
 
-//$con = mysqli_connect('MYSQL_HOST', 'MYSQL_USER', 'MYSQL_PASSWORD', 'MYSQL_NAME');
+$con = new mysqli($db_host, $db_user, $db_password, $db_name);
+
+if ($con->connect_error) {
+    die("Erreur de connexion : " . $con->connect_error);
+}
+

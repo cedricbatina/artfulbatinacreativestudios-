@@ -1,0 +1,10 @@
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# Rediriger tout vers index.php si aucun fichier ou dossier n'existe
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Définir le fichier d'accueil par défaut
+DirectoryIndex index.php
