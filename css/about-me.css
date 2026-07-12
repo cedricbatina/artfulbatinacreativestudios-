@@ -1,0 +1,51 @@
+
+.about-hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 2rem;
+  padding: 2.2rem 1.5rem 1.2rem 1.5rem;
+  box-shadow: 0 3px 24px rgba(0,0,0,0.07);
+  margin-bottom: 2.2rem;
+}
+.about-hero-photo {
+  flex: 0 0 170px;
+  border-radius: 50%;
+  box-shadow: 0 2px 16px rgba(60,60,60,0.11);
+  width: 160px; height: 160px; object-fit: cover;
+  margin-right: 2.4rem;
+  border: 5px solid #fff;
+  background: #e6e6e6;
+}
+@media (max-width: 700px) {
+  .about-hero { flex-direction: column; text-align: center; }
+  .about-hero-photo { margin: 0 auto 1rem auto; }
+}
+.about-keypoints { list-style:none; padding:0;}
+.about-keypoints li { margin-bottom: 0.7em; font-size: 1.08em;}
+.about-values { background: #f1f8fd; border-radius: 1rem; padding: 1.2em; box-shadow: 0 2px 10px rgba(0,0,0,0.05);}
+.about-values strong { color:#1156b2;}
+.about-cta-btn { font-weight:bold; font-size:1.09em;}
+
+.logo-img, #logo {
+  height: 75px;    /* Taille discrète, efficace pour un header/bannière */
+  width: 75px;
+  border-radius: 7px;
+  background: #fff;
+  padding: 1.5px;
+  display: block;
+  margin: 0 auto 10px auto;
+  box-shadow: none;
+  transition: 
+    box-shadow 0.2s cubic-bezier(.4,0,.2,1),
+    transform 0.2s cubic-bezier(.4,0,.2,1),
+    background 0.2s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+}
+
+.logo-img:hover, #logo:hover {
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.13);
+  background: #ffe3a1; /* léger halo jaune/orange pâle, optionnel */
+  transform: translateY(-2px) scale(1.04);
+}

@@ -1,0 +1,56 @@
+
+.fade-in {
+ opacity: 0;
+ transform: translateY(30px);
+ transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in.show {
+ opacity: 1;
+ transform: translateY(0);
+}
+.card:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+ transition: all 0.3s ease;
+}
+.creation-card:hover {
+ box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+.card-title {
+white-space: normal;
+word-break: break-word;
+}
+.visually-hidden-focusable { position:absolute; left:-9999px; }
+.visually-hidden-focusable:focus { position:static; left:auto; background: #ff4500; color:#fff; z-index:9999; padding:4px 8px; }
+
+#apropos ul.list-unstyled li {
+font-size: 1.08em;
+line-height: 1.6;
+display: flex;
+align-items: center;
+}
+#apropos .badge {
+font-size: .97em;
+padding: .5em .8em;
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+background: #f5ba35 !important; /* légèrement plus foncé que #fa9c26 */
+color: #1a1818 !important;
+border-color: #f5ba35 !important;
+box-shadow: 0 4px 20px rgba(250,156,38,0.09);
+}
+.btn:focus {
+outline: 2px solid #195cd8 !important;
+outline-offset: 2px;
+box-shadow: 0 0 0 3px #e3eafc !important;
+}
+
+
+@media (max-width: 576px) {
+ main, .container-fluid {
+   padding-left: 6px;
+   padding-right: 6px;
+ }
+}

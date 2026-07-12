@@ -1,2 +1,8 @@
 # Fichiers sensibles
 .env
+*.sql
+abcstudios_full.sql
+server.zip
+PHP-LINT-REPORT*.txt
+logs/
+*.log

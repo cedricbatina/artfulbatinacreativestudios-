@@ -1,0 +1,581 @@
+/* ============================= */
+/*        TYPO, COULEURS         */
+/* ============================= */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #fff;
+  color: #222;
+}
+
+
+a {
+  color: #1556c0;
+  text-decoration: none;
+  transition: color .2s;
+}
+a:hover, a:focus {
+  color: #ff4500;
+  text-decoration: underline;
+}
+strong { font-weight: 600; }
+.titre, h3, h5 { font-weight: 600; }
+.titre { font-size: larger; font-weight: bold; }
+
+.site_name {
+  font-size: 2rem;
+  color: #ff4500;
+  font-weight: bold;
+}
+
+.services_title {
+  color: #ff4500;
+  font-size: 2rem;
+  font-weight: bold;
+  transition: opacity .2s;
+}
+.services_title:hover { opacity: 0.85; }
+
+/* ============================= */
+/*        NAVBAR & HEADER        */
+/* ============================= */
+.main-header {
+  background-color: #1b1e23;
+  border-bottom: 1px solid #f1f3f7;
+  z-index: 1010;
+}
+.navbar-brand span.site_name {
+  color: #ffae23 !important;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+}
+.navbar-nav .nav-link {
+  color: #c8d0e0 !important;
+  font-weight: 500;
+  font-size: 1.05rem;
+  border-radius: 18px;
+  transition: color 0.17s, background 0.17s, box-shadow 0.15s;
+  position: relative;
+  outline: none;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:hover {
+  color: #ffae23 !important;
+  background: rgba(255,174,35,0.09);
+  box-shadow: 0 2px 7px rgba(22,84,192,0.07);
+  text-decoration: none;
+}
+.navbar-toggler {
+  border: none;
+  background: transparent;
+  outline: none;
+}
+.navbar-toggler-icon {
+  filter: invert(1) brightness(2) drop-shadow(0 0 2px #ffae23);
+}
+
+
+@media (max-width:991px) {
+  .navbar-nav { background: #1b1e23; border-radius: 0 0 14px 14px; padding-bottom: .7em;}
+}
+@media (max-width: 991px) {
+  .navbar-nav { 
+    background: #1b1e23;
+    border-radius: 0 0 16px 16px;
+    padding-bottom: 1em;
+    border-top: 2px solid #ffae23;
+  }
+}
+
+/* ============================= */
+/*           FOOTER              */
+/* ============================= */
+footer {
+  background: #1b1e23;
+  color: #c8d0e0;
+  padding: 2rem 0 1rem 0;
+  margin-top: 3rem;
+}
+footer a, .footer-link {
+  color: #ffae23;
+  font-weight: 500;
+}
+footer a:hover, .footer-link:hover { color: #fff; }
+.copyright {
+  font-size: 1em;
+  color: #ffae23;
+}
+.social-link {
+  color: #ffae23 !important;
+  margin: 0 6px;
+  transition: color 0.15s;
+  font-size: 1.35em;
+}
+.social-link:hover, .social-link:focus {
+  color: #fff !important;
+}
+/* ============================= */
+/*      BOUTONS MODERNES         */
+/* ============================= */
+.btn,
+button,
+button[class^="btn-"],
+[class*=" btn-"] {
+  font-size: 1rem;
+  padding: 0.7em 1.5em;
+  border: none;
+  border-radius: 7px;
+  font-weight: 500;
+  box-shadow: 0 2px 12px rgba(24,24,24,0.08);
+  cursor: pointer;
+  transition: 
+    background 0.18s,
+    box-shadow 0.18s,
+    color 0.16s,
+    transform 0.16s;
+  outline: none;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.btn:hover, button:hover,
+button[class^="btn-"]:hover,
+[class*=" btn-"]:hover {
+  transform: scale(1.045);
+  box-shadow: 0 4px 18px rgba(44,44,44,0.13);
+  filter: brightness(1.03);
+}
+
+.btn:active, button:active,
+button[class^="btn-"]:active,
+[class*=" btn-"]:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.17);
+  filter: brightness(0.98);
+}
+
+/* Désactivé */
+.btn:disabled,
+.btn[disabled],
+button[disabled] {
+  background-color: #ccc !important;
+  color: #999 !important;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+/* === Couleurs personnalisées === */
+.btn-primary,
+button.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+.btn-warning,
+button.btn-warning {
+  background-color: #ff4500;
+  color: #fff;
+}
+.btn-warning:hover, .btn-warning:focus {
+  background-color: #e03c00;
+  color: #fff;
+  box-shadow: 0 5px 14px rgba(255, 111, 35, 0.18);
+}
+
+.btn-success,
+button.btn-success {
+  background-color: #218838;
+  color: #fff;
+}
+.btn-success:hover, .btn-success:focus {
+  background-color: #28a745;
+  box-shadow: 0 5px 12px rgba(40, 167, 69, 0.13);
+}
+
+.btn-danger,
+button.btn-danger {
+  background-color: #c12f2c;
+  color: #fff;
+}
+.btn-danger:hover, .btn-danger:focus {
+  background-color: #d9534f;
+  box-shadow: 0 5px 12px rgba(217, 83, 79, 0.13);
+}
+
+.btn-secondary,
+button.btn-secondary {
+  background-color: #1ab69d;
+  color: #fff;
+}
+.btn-secondary:hover, .btn-secondary:focus {
+  background-color: #159b85;
+  box-shadow: 0 5px 12px rgba(26, 182, 157, 0.13);
+}
+
+/* OUTLINE Variants */
+.btn-outline-dark,
+button.btn-outline-dark {
+  border: 1.6px solid #007bff;
+  background: #fff;
+  color: #007bff;
+}
+.btn-outline-dark:hover, .btn-outline-dark:focus {
+  background: #007bff;
+  color: #fff !important;
+}
+
+.btn-outline-secondary,
+button.btn-outline-secondary {
+  border: 1.6px solid #1ab69d;
+  background: #fff;
+  color: #1ab69d;
+}
+.btn-outline-secondary:hover, .btn-outline-secondary:focus {
+  background: #1ab69d;
+  color: #fff !important;
+}
+
+/* Liens bouton */
+.btn-link, .btn-link:visited {
+  background: none !important;
+  color: #007bff !important;
+  box-shadow: none;
+  padding: 0.5em 1.1em;
+  text-decoration: underline;
+  border: none;
+}
+.btn-link:hover, .btn-link:focus {
+  color: #ff4500 !important;
+  text-decoration: underline;
+  background: none;
+  transform: scale(1.05);
+}
+
+/* Responsive : plein écran sur mobile */
+@media (max-width: 576px) {
+  .btn, button, [class*=" btn-"] {
+    width: 100%;
+    margin-bottom: 8px;
+    font-size: 1em;
+  }
+}
+
+/* ============================= */
+/*           CARDS               */
+/* ============================= */
+.card, .creation-card {
+  border: 1px solid #f1f3f7;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  transition: box-shadow .2s, transform .22s;
+}
+.card:hover, .creation-card:hover {
+  box-shadow: 0 6px 18px rgba(22,84,192,0.12);
+  transform: translateY(-4px) scale(1.012);
+}
+.card-title {
+  font-size: 1.12em;
+  font-weight: bold;
+  color: #ff4500;
+  white-space: normal;
+  word-break: break-word;
+}
+.card-img-top {
+  max-width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 5%;
+  transition: transform 300ms, opacity 250ms;
+}
+.card-img-top:hover { transform: scale(1.06); opacity: 0.92; }
+/* Images de projets web/app : on veut voir toute la capture, pas un zoom */
+.creation-card .card-img-top.card-img-web {
+  height: 220px;            /* tu peux ajuster : 200 / 220 / 240 */
+  object-fit: contain;      /* l’image rentre en entier */
+  background-color: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 12px;
+}
+@media (max-width: 992px) {
+  .card-img-top { height: 170px; }
+
+  .creation-card .card-img-top.card-img-web {
+    height: 190px;    /* un peu plus petit en mobile, mais toujours visible */
+  }
+}
+
+.short_card {
+  max-width: 100%;
+  height: 100%;
+}
+
+/* ============================= */
+/*     FORMULAIRES/INPUTS        */
+/* ============================= */
+.form-control, textarea, .contact_textarea {
+  border: 1px solid #ff4500;
+  border-radius: .28rem;
+  font-size: 1em;
+}
+.contact_textarea { min-height: 130px; max-height: 340px; }
+
+.form-control:focus, textarea:focus {
+  border-color: #1556c0;
+  box-shadow: 0 0 0 2px #e9f3ff;
+  outline: none;
+}
+
+/* ============================= */
+/*           TEXTS               */
+/* ============================= */
+.creation_date {
+  color: #888;
+  font-style: italic;
+  font-weight: 300;
+}
+h5 {
+  font-size: 1.13em;
+  color: #ff4500;
+}
+.showed_creation {
+  display: block;
+  margin: 0 auto;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+/* Icônes globales, effet pro */
+.fa-brands, .fa, i {
+  color: #195cd8;                /* Bleu profond, branding */
+  font-size: 1.25em;
+  vertical-align: middle;
+  transition: transform .19s, color .16s, box-shadow .18s;
+  /* Pour effet doux, pas trop rapide */
+}
+
+.fa-brands:hover, .fa:hover, i:hover {
+  color: #ffae23 !important;     /* Orange branding au survol */
+  transform: scale(1.23) rotate(-6deg);
+  box-shadow: 0 3px 14px rgba(25,92,216,0.09);
+  /* Léger effet “pop” sur fond clair */
+}
+
+/* Pour réseaux sociaux, adapte la couleur de base */
+.icon-linkedin { color: #0077b5; }
+.icon-github { color: #171515; }
+.icon-whatsapp { color: #25d366; }
+.icon-linkedin:hover, .icon-github:hover, .icon-whatsapp:hover {
+  filter: brightness(1.4) drop-shadow(0 1px 4px #fff2);
+}
+
+/* ============================= */
+/*         UTILITAIRES           */
+/* ============================= */
+hr { border: 1px solid #ff4500; }
+.studios { color: #ff4500; font-size: 1.1em; }
+.studios:hover { opacity: .8; }
+.phone_number, .email_address {
+  color: #ff4500;
+  font-size: 1em;
+  display: inline;
+  transition: transform 0.22s;
+}
+.phone_number:hover, .email_address:hover {
+  transform: scale(1.18);
+}
+.edit_content, .title_input {
+  width: 100%;
+}
+.edit_content { height: calc(100vh - 50px); }
+.visually-hidden-focusable {
+  position: absolute; left: -9999px; top: auto;
+  width: 1px; height: 1px; overflow: hidden; z-index: 10000;
+}
+.visually-hidden-focusable:focus {
+  position: static; left: auto; width: auto; height: auto;
+  background: #ff6700; color: #fff; padding: 4px 12px;
+  border-radius: 4px; font-size: 1rem;
+}
+.showed_creation { max-width: 80%; max-height: 80%; }
+
+.creation-card .btn { margin-top: 0.5em; }
+
+.creation-card .creation_date { margin-bottom: 0.5em; }
+
+/* ============================= */
+/*        RESPONSIVE             */
+/* ============================= */
+@media (max-width: 992px) {
+  .site_name { font-size: 1.3rem; }
+  .navbar-nav { padding: 1rem 0; }
+  .navbar-nav .nav-item { margin: 0.5rem 0; }
+  .card-img-top { height: 170px; }
+}
+@media (max-width: 576px) {
+  .site_name { font-size: 1rem; text-align: center; }
+  .services_title, h3 { font-size: 1.1rem; }
+  .btn { width: 100%; }
+  .main-header { padding-bottom: 0; }
+  .navbar-brand span { font-size: 1rem; }
+  .navbar-nav .nav-link { margin-bottom: 5px; }
+  #contact-form { padding: 1rem !important; }
+}
+/* ============================= */
+/*     NAVBAR + SOCIAL HEADER    */
+/* ============================= */
+
+.navbar-nav .nav-link {
+  color: #c8d0e0 !important;
+  font-weight: 500;
+  transition: color .16s, background .12s;
+  border-radius: 22px;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: #ffae23 !important;
+  background: rgba(255, 174, 35, 0.11);
+  outline: none;
+}
+
+.navbar-toggler { outline: none !important; }
+.navbar-toggler-icon { background-size: 80%; }
+
+
+
+.btn-outline-light, .btn-outline-secondary {
+  border-color: #ffae23 !important;
+  color: #ffae23 !important;
+  background: transparent;
+}
+.btn-outline-light:hover, .btn-outline-secondary:hover {
+  background: #ffae23 !important;
+  color: #222 !important;
+}
+
+@media (max-width: 991px) {
+  .navbar-nav { background: #1b1e23; border-radius: 0 0 16px 16px; padding-bottom: 1em;}
+  .main-header { padding-bottom: 0; }
+  .social-links { justify-content: center; }
+  .social-links .social-link {
+    display: inline-block;
+    color: #c8d0e0;
+    font-size: 1.13em;
+    background: none;
+    border-radius: 6px;
+    vertical-align: middle;
+    transition: color .16s, background .17s;
+    padding: 0 5px;
+    line-height: 1.2;
+    box-shadow: none;
+    margin: 0 2px;
+    text-decoration: none;
+  }
+  
+  .social-links .social-link i {
+    vertical-align: -0.13em;
+  }
+  
+  .social-links .social-link:hover, 
+  .social-links .social-link:focus {
+    color: #ffae23 !important;
+    background: none;
+    text-decoration: underline;
+    outline: none;
+  }
+  
+  .social-links .social-link:focus-visible {
+    outline: 2px solid #ffae23;
+  }
+  
+  .icon-linkedin { color: #0077b5 !important; }
+  .icon-github { color: #222 !important; }
+  .icon-whatsapp { color: #25d366 !important; }
+  
+}
+/* ============================= */
+/*  IMAGES PROJETS WEB / APPS    */
+/* ============================= */
+
+.card-img-top.card-img-web {
+  height: 210px;          /* même “slot” que les autres, mais */
+  object-fit: contain;    /* on voit TOUTE l'image, pas un zoom */
+  background-color: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 12px;
+}
+
+/* Sur mobile, on ajuste un peu la hauteur */
+@media (max-width: 991px) {
+  .card-img-top.card-img-web {
+    height: 190px;
+  }
+}
+.card-img-top {
+  display: block;
+  width: 100%;
+  max-height: 220px;      /* limite la hauteur du cadre */
+  height: auto;           /* laisse le navigateur garder les proportions */
+  object-fit: contain;    /* l’image est entièrement visible, pas zoomée */
+  background-color: #f8f9fa; /* petit fond clair autour si besoin */
+  padding: 0.5rem;        /* un peu de marge interne */
+  border-radius: 10px;
+  transition: transform 300ms, opacity 250ms;
+}
+
+.card-img-top:hover {
+  transform: scale(1.03);
+  opacity: 0.96;
+}
+
+@media (max-width: 991px) {
+  .card-img-top {
+    max-height: 200px;    /* un peu plus compact sur mobile */
+  }
+}
+.card-img-top {
+  display: block;
+  width: 100%;
+  height: auto;          /* on laisse le ratio naturel */
+  max-height: 220px;     /* limite la hauteur pour harmoniser les cards */
+  object-fit: contain;   /* on voit TOUTE l’image, même si elle est très large */
+  background-color: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 10px;
+  transition: transform 300ms, opacity 250ms;
+}
+
+.card-img-top:hover {
+  transform: scale(1.03);
+  opacity: 0.96;
+}
+
+@media (max-width: 991px) {
+  .card-img-top {
+    max-height: 200px;   /* un peu plus compact sur mobile */
+  }
+}
+/* ============================= */
+/*     IMAGES CARDS CREATIONS    */
+/* ============================= */
+
+/* On force un style spécial pour les images dans les cards de créations */
+.creation-card .card-img-top {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 220px !important;   /* tu peux monter à 240 si besoin */
+  object-fit: contain !important; /* on voit TOUTE l'image, pas juste un bout */
+  background-color: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+@media (max-width: 991px) {
+  .creation-card .card-img-top {
+    max-height: 200px !important;
+  }
+}

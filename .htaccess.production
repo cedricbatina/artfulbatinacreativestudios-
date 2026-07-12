@@ -1,0 +1,75 @@
+# Infomaniak / artfulbatinacreativestudios.fr (racine du domaine)
+# Renommer en .htaccess avant upload FTP — NE PAS utiliser le .htaccess XAMPP tel quel.
+
+Options -Indexes
+DirectoryIndex language-router.php
+RewriteEngine On
+RewriteBase /
+
+<FilesMatch "^(\.env|.*\.sql|composer\.(json|lock)|.*\.log)$">
+    Require all denied
+</FilesMatch>
+
+RewriteRule ^(?:logs|vendor|src|locales|data)/ - [F,L,NC]
+RewriteRule ^$ language-router.php [L,QSA]
+
+RewriteRule ^fr/?$ index.php?lang=fr [L,QSA]
+RewriteRule ^fr/a-propos/?$ about-me.php?lang=fr [L,QSA]
+RewriteRule ^fr/realisations/?$ realisations.php?lang=fr [L,QSA]
+RewriteRule ^fr/le-studio/?$ studio.php?lang=fr [L,QSA]
+RewriteRule ^fr/services/?$ services.php?lang=fr [L,QSA]
+RewriteRule ^fr/partenaires/?$ partners.php?lang=fr [L,QSA]
+RewriteRule ^fr/nos-actifs/?$ assets.php?lang=fr [L,QSA]
+RewriteRule ^fr/bibliotheque/?$ library.php?lang=fr [L,QSA]
+RewriteRule ^fr/ressources/?$ resources.php?lang=fr [L,QSA]
+RewriteRule ^fr/technologies/?$ technologies.php?lang=fr [L,QSA]
+RewriteRule ^fr/methode/?$ method.php?lang=fr [L,QSA]
+RewriteRule ^fr/contact/?$ contact.php?lang=fr [L,QSA]
+RewriteRule ^fr/legal/mentions-legales/?$ legal/mentions-legales.php?lang=fr [L,QSA]
+RewriteRule ^fr/legal/confidentialite/?$ legal/confidentialite.php?lang=fr [L,QSA]
+
+RewriteRule ^en/?$ index.php?lang=en [L,QSA]
+RewriteRule ^en/about/?$ about-me.php?lang=en [L,QSA]
+RewriteRule ^en/work/?$ realisations.php?lang=en [L,QSA]
+RewriteRule ^en/the-studio/?$ studio.php?lang=en [L,QSA]
+RewriteRule ^en/services/?$ services.php?lang=en [L,QSA]
+RewriteRule ^en/partners/?$ partners.php?lang=en [L,QSA]
+RewriteRule ^en/our-assets/?$ assets.php?lang=en [L,QSA]
+RewriteRule ^en/library/?$ library.php?lang=en [L,QSA]
+RewriteRule ^en/resources/?$ resources.php?lang=en [L,QSA]
+RewriteRule ^en/technologies/?$ technologies.php?lang=en [L,QSA]
+RewriteRule ^en/method/?$ method.php?lang=en [L,QSA]
+RewriteRule ^en/contact/?$ contact.php?lang=en [L,QSA]
+RewriteRule ^en/legal/legal-notice/?$ legal/mentions-legales.php?lang=en [L,QSA]
+RewriteRule ^en/legal/privacy/?$ legal/confidentialite.php?lang=en [L,QSA]
+
+RewriteRule ^pt/?$ index.php?lang=pt [L,QSA]
+RewriteRule ^pt/sobre/?$ about-me.php?lang=pt [L,QSA]
+RewriteRule ^pt/realizacoes/?$ realisations.php?lang=pt [L,QSA]
+RewriteRule ^pt/o-estudio/?$ studio.php?lang=pt [L,QSA]
+RewriteRule ^pt/servicos/?$ services.php?lang=pt [L,QSA]
+RewriteRule ^pt/parceiros/?$ partners.php?lang=pt [L,QSA]
+RewriteRule ^pt/nossos-ativos/?$ assets.php?lang=pt [L,QSA]
+RewriteRule ^pt/biblioteca/?$ library.php?lang=pt [L,QSA]
+RewriteRule ^pt/recursos/?$ resources.php?lang=pt [L,QSA]
+RewriteRule ^pt/tecnologias/?$ technologies.php?lang=pt [L,QSA]
+RewriteRule ^pt/metodo/?$ method.php?lang=pt [L,QSA]
+RewriteRule ^pt/contacto/?$ contact.php?lang=pt [L,QSA]
+RewriteRule ^pt/legal/aviso-legal/?$ legal/mentions-legales.php?lang=pt [L,QSA]
+RewriteRule ^pt/legal/privacidade/?$ legal/confidentialite.php?lang=pt [L,QSA]
+
+RewriteCond %{THE_REQUEST} \s/+[^?\s]*/about-me\.php[\s?] [NC]
+RewriteRule ^about-me\.php$ fr/a-propos [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+[^?\s]*/batinacedric\.php[\s?] [NC]
+RewriteRule ^batinacedric\.php$ fr/a-propos [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+[^?\s]*/(?:realisations|creations)\.php[\s?] [NC]
+RewriteRule ^(?:realisations|creations)\.php$ fr/realisations [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+[^?\s]*/contact\.php[\s?] [NC]
+RewriteRule ^contact\.php$ fr/contact [R=301,L,NC]
+RewriteRule ^privacy\.php$ fr/legal/confidentialite [R=301,L,NC]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+ErrorDocument 404 /404.php

@@ -1,6 +1,6 @@
 <div class="container-fluid text-center my-3">
-  <img src="./images/official_logo_@bc_transparent.png"
-       class="logo m-auto"
+  <img src="./images/pictures/official_logo_@bc_transparent.png"
+       class="logo-img m-auto w-30"
        id="logo"
        alt="Logo Artful Batina Creative Studios">
   <h2 class="slogan text-center small mt-2 mb-2">La communication est la clé.</h2>
@@ -42,3 +42,27 @@ function updateClock() {
 setInterval(updateClock, 1000);
 updateClock();
 </script>
+<style>
+  .logo-img, #logo {
+  height: 150px;    /* Taille discrète, efficace pour un header/bannière */
+  width: 150px;
+  border-radius: 7px;
+  background: #fff;
+  padding: 1.5px;
+  display: block;
+  margin: 0 auto 10px auto;
+  box-shadow: none;
+  transition: 
+    box-shadow 0.2s cubic-bezier(.4,0,.2,1),
+    transform 0.2s cubic-bezier(.4,0,.2,1),
+    background 0.2s cubic-bezier(.4,0,.2,1);
+  cursor: pointer;
+}
+
+.logo-img:hover, #logo:hover {
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.13);
+  background: #ffe3a1; /* léger halo jaune/orange pâle, optionnel */
+  transform: translateY(-2px) scale(1.04);
+}
+
+</style>

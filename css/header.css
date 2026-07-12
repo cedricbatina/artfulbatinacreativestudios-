@@ -1,0 +1,65 @@
+/* ============================= */
+/*     NAVBAR + SOCIAL HEADER    */
+/* ============================= */
+
+.navbar-nav .nav-link {
+ color: #c8d0e0 !important;
+ font-weight: 500;
+ transition: color .16s, background .12s;
+ border-radius: 22px;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+ color: #ffae23 !important;
+ background: rgba(255, 174, 35, 0.11);
+ outline: none;
+}
+
+.navbar-toggler { outline: none !important; }
+.navbar-toggler-icon { background-size: 80%; }
+
+/* --- Social links (nouveau style) --- */
+.social-links .social-link {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ border-radius: 50%;
+ font-size: 1.28em;
+ padding: 0.47em;
+ background: #f6f9ff;
+ transition: transform .18s, color .16s, box-shadow .17s, background .18s;
+ color: #195cd8;
+ margin: 0 4px;
+}
+
+.icon-linkedin { color: #0077b5; }
+.icon-github { color: #222; }
+.icon-whatsapp { color: #25d366; }
+
+.social-links .social-link:hover, .social-links .social-link:focus {
+ background: linear-gradient(90deg, #195cd8 65%, #ffae23 100%);
+ color: #fff !important;
+ box-shadow: 0 2px 16px rgba(25,92,216,0.12);
+ transform: scale(1.18) rotate(-6deg);
+ outline: none;
+}
+.social-links .social-link:focus-visible { outline: 2px solid #ffae23; }
+.main-header {
+ background-color: #888;
+}
+.btn-outline-light, .btn-outline-secondary {
+ border-color: #ffae23 !important;
+ color: #ffae23 !important;
+ background: transparent;
+}
+.btn-outline-light:hover, .btn-outline-secondary:hover {
+ background: #ffae23 !important;
+ color: #222 !important;
+}
+
+@media (max-width: 991px) {
+ .navbar-nav { background: #1b1e23; border-radius: 0 0 16px 16px; padding-bottom: 1em;}
+ .main-header { padding-bottom: 0; }
+ .social-links { justify-content: center; }
+}

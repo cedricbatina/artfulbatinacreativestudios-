@@ -1,0 +1,8 @@
+
+.profile-hero { background:#f8f9fa; border-radius:2rem; padding:2.3rem 1.6rem 1.3rem 1.6rem; box-shadow:0 3px 22px rgba(0,0,0,0.10); margin-bottom:2.2rem; display:flex; flex-wrap:wrap; align-items:center; gap:1.7rem;}
+.profile-hero img { width:120px; height:120px; object-fit:cover; border-radius:50%; border:5px solid #fff; box-shadow:0 2px 16px rgba(60,60,60,0.11);}
+@media (max-width:700px){.profile-hero{flex-direction:column; text-align:center;} .profile-hero img{margin:0 auto 1rem auto;}}
+.about-keypoints{list-style:none; padding:0;}
+.about-keypoints li{margin-bottom:0.7em; font-size:1.08em;}
+.profile-btns .btn{margin-right:8px;}
+.card-img-top{background:#eee;}

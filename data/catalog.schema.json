@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Artful catalog SSOT (SC-0011)",
+  "description": "Études de cas, réalisations techniques, stats. Pas catalogue vente Batina Media.",
+  "type": "object",
+  "properties": {
+    "version": { "type": "string" },
+    "stats": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "value", "label"],
+        "properties": {
+          "key": { "type": "string" },
+          "value": { "type": "string" },
+          "label": { "type": "object", "additionalProperties": { "type": "string" } },
+          "source": { "type": "string", "enum": ["manual", "batina-os", "tala"] }
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "title"],
+        "properties": {
+          "id": { "type": "string" },
+          "kind": { "enum": ["case_study", "realization", "capability", "archive", "lab"] },
+          "category": {
+            "enum": [
+              "platform", "application", "backoffice", "automation", "api",
+              "generator", "research", "library", "partner_site", "experiment"
+            ]
+          },
+          "title": { "type": "object", "additionalProperties": { "type": "string" } },
+          "summary": { "type": "object", "additionalProperties": { "type": "string" } },
+          "challenge": { "type": "object", "additionalProperties": { "type": "string" } },
+          "stack": { "type": "array", "items": { "type": "string" } },
+          "highlights": {
+            "type": "object",
+            "additionalProperties": { "type": "array", "items": { "type": "string" } }
+          },
+          "productUrl": { "type": "string", "format": "uri" },
+          "productUrlLibrary": {
+            "type": "string",
+            "format": "uri",
+            "description": "Lien fiche Longoka papeterie (/stationery/slug) — ouvrage partenaire en vente, optionnel"
+          },
+          "productHost": { "enum": ["longoka", "batina-media", "lexikongo", "madizi", "external", "none"] },
+          "availability": {
+            "enum": ["available", "download", "print", "trial", "preorder", "quote", "internal"],
+            "description": "Visiteur — jamais merchant/non-merchant"
+          },
+          "merchant": { "type": "boolean", "description": "Interne BATINA OS uniquement" },
+          "featured": { "type": "boolean" },
+          "status": { "enum": ["live", "preview", "archived", "lab"] },
+          "year": { "type": "integer" }
+        }
+      }
+    }
+  }
+}
