@@ -3,20 +3,20 @@ declare(strict_types=1);
 $GLOBALS['artful_route_name']='legal';
 require_once dirname(__DIR__).'/includes/site.php';
 $title=(string)t('legal.notice');
-$meta=artful_page_meta(['title'=>$title.' — Artful Batina','description'=>$title,'robots'=>'noindex, follow']);
+$meta=artful_page_meta(['title'=>$title.' — @rtful Batina Creative Studios','description'=>$title,'robots'=>'noindex, follow']);
 $sections=[
     'fr' => [
-        '(\'Éditeur\', \'Le site est édité par Cédric Batina, entrepreneur individuel exerçant sous le nom commercial Artful Batina Creative Studios.\')',
+        '(\'Éditeur\', \'Le site est édité par Cédric Batina, entrepreneur individuel exerçant sous le nom commercial @rtful Batina Creative Studios.\')',
         '(\'À compléter avant production\', \'Le SIREN/SIRET officiel et les coordonnées exactes de l’hébergeur doivent être renseignés.\')',
         '(\'Propriété intellectuelle\', \'Les contenus et créations restent protégés par les droits applicables.\')'
     ],
     'en' => [
-        '(\'Publisher\', \'This website is published by Cédric Batina, an independent entrepreneur trading as Artful Batina Creative Studios.\')',
+        '(\'Publisher\', \'This website is published by Cédric Batina, an independent entrepreneur trading as @rtful Batina Creative Studios.\')',
         '(\'Complete before production\', \'The official business registration number and exact hosting details must be added.\')',
         '(\'Intellectual property\', \'Content and creative work remain protected by applicable rights.\')'
     ],
     'pt' => [
-        '(\'Editor\', \'Este site é editado por Cédric Batina, empreendedor individual que exerce sob o nome comercial Artful Batina Creative Studios.\')',
+        '(\'Editor\', \'Este site é editado por Cédric Batina, empreendedor individual que exerce sob o nome comercial @rtful Batina Creative Studios.\')',
         '(\'Completar antes da produção\', \'O número oficial de registo e os dados exatos do alojamento devem ser adicionados.\')',
         '(\'Propriedade intelectual\', \'Os conteúdos e criações permanecem protegidos pelos direitos aplicáveis.\')'
     ]

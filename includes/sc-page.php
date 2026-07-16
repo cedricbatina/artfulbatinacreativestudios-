@@ -60,6 +60,8 @@ function artful_render_sc_page(string $routeName, string $localeKey): void
         $replacements[':prestations_grid'] = artful_services_grid();
     }
 
+    // Remplacer d’abord les jetons les plus longs (:technologies_content avant :technologies).
+    uksort($replacements, static fn(string $a, string $b): int => strlen($b) <=> strlen($a));
     $body = str_replace(array_keys($replacements), array_values($replacements), $body);
     $body = artful_localize_html($body);
 

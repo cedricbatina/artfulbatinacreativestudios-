@@ -1,0 +1,27 @@
+{
+  "name": "@rtful Batina Creative Studios",
+  "short_name": "@rtful",
+  "description": "Maison mère d’ingénierie numérique — plateformes, applications, édition et automatisations. Cédric Batina.",
+  "start_url": "/fr/",
+  "display": "standalone",
+  "background_color": "#faf7f2",
+  "theme_color": "#171717",
+  "lang": "fr-FR",
+  "icons": [
+    {
+      "src": "/images/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

@@ -52,51 +52,45 @@ function artful_project_cards(): string
     return $html;
 }
 
-/** Bloc 10 s — Artful (atelier) vs Batina Media (vitrine produits). */
+/** Bloc Artful (maison mère / vitrine) ↔ Batina Media (écosystème savoirs). Sans méta « voix ». */
 function artful_role_clarity_section(): string
 {
     $copy = [
         'fr' => [
-            'eyebrow' => 'Deux rôles distincts',
-            'title' => 'Artful conçoit · Batina Media publie',
-            'intro' => 'Ne pas confondre l’atelier technique et la vitrine des produits publics.',
-            'artful_label' => 'Artful — atelier',
-            'artful_title' => 'Creative Studios',
-            'artful_body' => 'Je conçois et développe plateformes, applications, identités, éditions et automatisations — de la donnée au déploiement.',
-            'artful_voice' => 'Voix : je · Cédric Batina',
-            'batina_label' => 'Batina Media — écosystème',
-            'batina_title' => 'Ingénierie des savoirs',
-            'batina_body' => 'Solutions autour de vos savoirs — plateformes, modèles de données et éditions. Produits publics : Longoka, Lexikongo, Madizi…',
+            'eyebrow' => 'Maison & écosystème',
+            'title' => '@rtful Batina Creative Studios porte l’ensemble',
+            'intro' => 'La maison mère : gouvernance et vitrine des projets. Batina Media conçoit et publie l’ingénierie des savoirs et les produits publics.',
+            'artful_label' => 'Maison mère',
+            'artful_title' => '@rtful Batina Creative Studios',
+            'artful_body' => 'Entreprise de Cédric Batina. Elle regroupe et présente l’ensemble des projets — la vitrine de la maison, pas le catalogue des produits.',
+            'batina_label' => 'Écosystème',
+            'batina_title' => 'Batina Media',
+            'batina_body' => 'Ingénierie des savoirs : conception, plateformes et produits publics — Longoka, Lexikongo, Madizi…',
             'batina_cta' => 'Découvrir Batina Media ↗',
-            'batina_voice' => 'Voix : nous · institutionnel',
         ],
         'en' => [
-            'eyebrow' => 'Two distinct roles',
-            'title' => 'Artful designs · Batina Media publishes',
-            'intro' => 'Do not confuse the technical studio with the public product showcase.',
-            'artful_label' => 'Artful — workshop',
-            'artful_title' => 'Creative Studios',
-            'artful_body' => 'I design and build platforms, applications, identities, publishing pipelines and automations — from data to deployment.',
-            'artful_voice' => 'Voice: I · Cédric Batina',
-            'batina_label' => 'Batina Media — ecosystem',
-            'batina_title' => 'Knowledge engineering',
-            'batina_body' => 'Solutions around your knowledge — platforms, data models and publishing. Public products: Longoka, Lexikongo, Madizi…',
+            'eyebrow' => 'House & ecosystem',
+            'title' => '@rtful Batina Creative Studios holds it together',
+            'intro' => 'The parent company: governance and project showcase. Batina Media designs and publishes knowledge engineering and the public products.',
+            'artful_label' => 'Parent company',
+            'artful_title' => '@rtful Batina Creative Studios',
+            'artful_body' => 'Cédric Batina’s company. It brings together and presents the full set of projects — the house showcase, not the product catalogue.',
+            'batina_label' => 'Ecosystem',
+            'batina_title' => 'Batina Media',
+            'batina_body' => 'Knowledge engineering: design, platforms and public products — Longoka, Lexikongo, Madizi…',
             'batina_cta' => 'Explore Batina Media ↗',
-            'batina_voice' => 'Voice: we · institutional',
         ],
         'pt' => [
-            'eyebrow' => 'Dois papéis distintos',
-            'title' => 'Artful concebe · Batina Media publica',
-            'intro' => 'Não confundir o atelier técnico com a montra dos produtos públicos.',
-            'artful_label' => 'Artful — atelier',
-            'artful_title' => 'Creative Studios',
-            'artful_body' => 'Concebo e desenvolvo plataformas, aplicações, identidades, edição e automações — dos dados ao deploy.',
-            'artful_voice' => 'Voz: eu · Cédric Batina',
-            'batina_label' => 'Batina Media — ecossistema',
-            'batina_title' => 'Engenharia do conhecimento',
-            'batina_body' => 'Soluções em torno dos seus saberes — plataformas, modelos de dados e edição. Produtos públicos: Longoka, Lexikongo, Madizi…',
+            'eyebrow' => 'Casa & ecossistema',
+            'title' => '@rtful Batina Creative Studios reúne o conjunto',
+            'intro' => 'A casa-mãe: governação e montra dos projetos. Batina Media concebe e publica a engenharia dos saberes e os produtos públicos.',
+            'artful_label' => 'Casa-mãe',
+            'artful_title' => '@rtful Batina Creative Studios',
+            'artful_body' => 'Empresa de Cédric Batina. Reúne e apresenta o conjunto dos projetos — a montra da casa, não o catálogo de produtos.',
+            'batina_label' => 'Ecossistema',
+            'batina_title' => 'Batina Media',
+            'batina_body' => 'Engenharia dos saberes: conceção, plataformas e produtos públicos — Longoka, Lexikongo, Madizi…',
             'batina_cta' => 'Descobrir Batina Media ↗',
-            'batina_voice' => 'Voz: nós · institucional',
         ],
     ][artful_locale()];
 
@@ -107,14 +101,13 @@ function artful_role_clarity_section(): string
     $html .= '<div class="role-clarity-grid"><article class="role-clarity-card role-clarity-card--artful">';
     $html .= '<p class="eyebrow eyebrow--muted">' . artful_e($copy['artful_label']) . '</p>';
     $html .= '<h3>' . artful_e($copy['artful_title']) . '</h3>';
-    $html .= '<p>' . artful_e($copy['artful_body']) . '</p>';
-    $html .= '<p class="role-clarity__voice">' . artful_e($copy['artful_voice']) . '</p></article>';
+    $html .= '<p>' . artful_e($copy['artful_body']) . '</p></article>';
     $html .= '<article class="role-clarity-card role-clarity-card--batina">';
     $html .= '<p class="eyebrow eyebrow--muted">' . artful_e($copy['batina_label']) . '</p>';
     $html .= '<h3>' . artful_e($copy['batina_title']) . '</h3>';
     $html .= '<p>' . artful_e($copy['batina_body']) . '</p>';
     $html .= '<a class="card-link" href="https://batina-media.com" target="_blank" rel="noopener">' . artful_e($copy['batina_cta']) . '</a>';
-    $html .= '<p class="role-clarity__voice">' . artful_e($copy['batina_voice']) . '</p></article></div></div></section>';
+    $html .= '</article></div></div></section>';
     return $html;
 }
 

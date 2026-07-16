@@ -6,3 +6,29 @@ server.zip
 PHP-LINT-REPORT*.txt
 logs/
 *.log
+*.DISABLED*
+migrate-passwords.php
+generate-slugs.php
+# Ne jamais committer de dumps / one-shot admin
+.phpinfo.php
+install.php
+# Legacy 1.x archivé hors webroot (voir C:\xampp\htdocs\_archive_artful_legacy_20260715)
+PHPMailer/
+uploads/
+src/
+confirmation*.php
+contact_form.php
+send_mail.php
+mail_confirmation.php
+login.php
+logout.php
+signup.php
+profile.php*
+private-access.php
+database_connexion.php
+header.php
+footer.php
+banner.php
+functions.php
+social_links.php
+faq_contact.php

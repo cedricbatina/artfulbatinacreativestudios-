@@ -124,11 +124,11 @@
         "en": "Industrialise publishing from heterogeneous sources — not HTML only — without sacrificing typographic quality.",
         "pt": "Industrializar edição a partir de fontes heterogéneas — não só HTML — com qualidade tipográfica."
       },
-      "stack": ["PHP", "MySQL", "InDesign", "JSX", "PDF"],
+      "stack": ["InDesign", "JSX", "PDF", "Données structurées"],
       "highlights": {
-        "fr": ["Générateurs de livres & cahiers", "Papeterie & jeux (/stationeries)", "Ouvrage partenaire (/stationery/…)"],
-        "en": ["Book & notebook generators", "Stationery & games (/stationeries)", "Partner book (/stationery/…)"],
-        "pt": ["Geradores de livros & cadernos", "Papelaria & jogos (/stationeries)", "Obra parceira (/stationery/…)"]
+        "fr": ["Générateurs de livres & cahiers", "Papeterie Longoka (/stationeries)", "Ouvrage partenaire (/stationery/…)"],
+        "en": ["Book & notebook generators", "Longoka stationery (/stationeries)", "Partner book (/stationery/…)"],
+        "pt": ["Geradores de livros & cadernos", "Papelaria Longoka (/stationeries)", "Obra parceira (/stationery/…)"]
       },
       "productUrl": "https://longoka.com/stationeries",
       "productUrlLibrary": "https://longoka.com/stationery/racines-etymologiques-groupe-linguistique-koongo",
@@ -144,13 +144,13 @@
       "kind": "realization",
       "category": "generator",
       "title": { "fr": "Moteurs Longoka Games", "en": "Longoka Games engines", "pt": "Motores Longoka Games" },
-      "summary": { "fr": "Génération de jeux éducatifs (wordsearch, crosswords, dominos…) — pipeline Java interne.", "en": "Educational game generation engines — internal Java pipeline.", "pt": "Motores de geração de jogos educativos." },
-      "stack": ["Java", "PHP", "Automatisations"],
+      "summary": { "fr": "Génération de jeux éducatifs (wordsearch, crosswords, dominos…) — pipeline Java interne (Longoka Games).", "en": "Educational game generation (wordsearch, crosswords, dominos…) — internal Java pipeline (Longoka Games).", "pt": "Geração de jogos educativos — pipeline Java interno (Longoka Games)." },
+      "stack": ["Java", "Automatisations"],
       "productHost": "longoka",
-      "productUrl": "https://longoka.com",
-      "availability": "internal",
+      "productUrl": "https://longoka.com/games",
+      "availability": "available",
       "merchant": false,
-      "featured": false,
+      "featured": true,
       "status": "live",
       "year": 2022
     }

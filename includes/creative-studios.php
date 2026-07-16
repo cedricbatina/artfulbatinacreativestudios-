@@ -9,7 +9,7 @@ function artful_creative_studios_section(bool $compact = false): string
     $locale = artful_locale();
     $copy = [
         'fr' => [
-            'eyebrow' => 'Creative Studios',
+            'eyebrow' => '@rtful Batina Creative Studios',
             'title' => 'Sept pôles, une chaîne de conception',
             'intro' => 'Le pluriel désigne les disciplines réunies dans le même flux — pas une agence web ni une simple société de logiciel.',
             'poles' => [
@@ -23,7 +23,7 @@ function artful_creative_studios_section(bool $compact = false): string
             ],
         ],
         'en' => [
-            'eyebrow' => 'Creative Studios',
+            'eyebrow' => '@rtful Batina Creative Studios',
             'title' => 'Seven hubs, one design chain',
             'intro' => 'The plural brings disciplines into one workflow — not a web agency or software shop alone.',
             'poles' => [
@@ -37,7 +37,7 @@ function artful_creative_studios_section(bool $compact = false): string
             ],
         ],
         'pt' => [
-            'eyebrow' => 'Creative Studios',
+            'eyebrow' => '@rtful Batina Creative Studios',
             'title' => 'Sete polos, uma cadeia de conceção',
             'intro' => 'O plural reúne disciplinas no mesmo fluxo — não apenas uma agência web ou software.',
             'poles' => [

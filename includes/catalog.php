@@ -71,13 +71,15 @@ function artful_case_study_cards(bool $featuredOnly = true): string
     }
 
     $seeProduct = ['fr' => 'Voir le produit ↗', 'en' => 'View product ↗', 'pt' => 'Ver produto ↗'];
-    $seeStationery = ['fr' => 'Papeterie & jeux ↗', 'en' => 'Stationery & games ↗', 'pt' => 'Papelaria & jogos ↗'];
+    $seeStationery = ['fr' => 'Papeterie ↗', 'en' => 'Stationery ↗', 'pt' => 'Papelaria ↗'];
+    $seeGames = ['fr' => 'Jeux Longoka ↗', 'en' => 'Longoka games ↗', 'pt' => 'Jogos Longoka ↗'];
     $seePartnerBook = ['fr' => 'Ouvrage partenaire ↗', 'en' => 'Partner book ↗', 'pt' => 'Obra parceira ↗'];
     $seeCase = ['fr' => 'Étude de cas', 'en' => 'Case study', 'pt' => 'Estudo de caso'];
     $locale = artful_locale();
 
     $html = '<div class="grid grid-3">';
     foreach ($items as $item) {
+        $id = (string)($item['id'] ?? '');
         $title = artful_catalog_locale_text($item['title'] ?? []);
         $summary = artful_catalog_locale_text($item['summary'] ?? []);
         $category = (string)($item['category'] ?? 'platform');
@@ -95,7 +97,11 @@ function artful_case_study_cards(bool $featuredOnly = true): string
         }
         $html .= '<p class="case-study-card__availability"><span class="availability-pill">' . artful_e($availability) . '</span></p>';
         if ($productUrl !== '') {
-            $linkLabel = ($item['id'] ?? '') === 'editorial-pipeline' ? $seeStationery[$locale] : $seeProduct[$locale];
+            $linkLabel = match ($id) {
+                'editorial-pipeline' => $seeStationery[$locale],
+                'longoka-games-engines' => $seeGames[$locale],
+                default => $seeProduct[$locale],
+            };
             $html .= '<a class="card-link" href="' . artful_e($productUrl) . '" target="_blank" rel="noopener">' . artful_e($linkLabel) . '</a>';
         }
         if ($productUrlLibrary !== '') {

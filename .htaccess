@@ -4,15 +4,22 @@ RewriteEngine On
 # LOCAL XAMPP uniquement — en prod Infomaniak : utiliser .htaccess.production (RewriteBase /)
 RewriteBase /artfulbatinacreativestudios/
 
-<FilesMatch "^(\.env|.*\.sql|composer\.(json|lock)|.*\.log)$">
+# P0-S2 / P0-S3 — secrets & scripts one-shot (2026-07-15)
+<FilesMatch "^(\.env|.*\.sql|composer\.(json|lock)|.*\.log|.*\.DISABLED.*)$">
     Require all denied
 </FilesMatch>
-
-RewriteRule ^(?:logs|vendor|src|locales|data)/ - [F,L,NC]
+<FilesMatch "^(migrate-passwords|generate-slugs|install|phpinfo)\.php$">
+    Require all denied
+</FilesMatch>
+RewriteRule ^\.git(?:/|$) - [F,L,NC]
+RewriteRule ^(?:logs|vendor|src|locales|data|includes)/ - [F,L,NC]
+RewriteRule ^(?:migrate-passwords|generate-slugs|install|phpinfo)\.php$ - [F,L,NC]
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
 RewriteRule ^$ language-router.php [L,QSA]
 
 RewriteRule ^fr/?$ index.php?lang=fr [L,QSA]
 RewriteRule ^fr/a-propos/?$ about-me.php?lang=fr [L,QSA]
+RewriteRule ^fr/presse/?$ presse.php?lang=fr [L,QSA]
 RewriteRule ^fr/realisations/?$ realisations.php?lang=fr [L,QSA]
 RewriteRule ^fr/le-studio/?$ studio.php?lang=fr [L,QSA]
 RewriteRule ^fr/services/?$ services.php?lang=fr [L,QSA]
@@ -28,6 +35,7 @@ RewriteRule ^fr/legal/confidentialite/?$ legal/confidentialite.php?lang=fr [L,QS
 
 RewriteRule ^en/?$ index.php?lang=en [L,QSA]
 RewriteRule ^en/about/?$ about-me.php?lang=en [L,QSA]
+RewriteRule ^en/press/?$ presse.php?lang=en [L,QSA]
 RewriteRule ^en/work/?$ realisations.php?lang=en [L,QSA]
 RewriteRule ^en/the-studio/?$ studio.php?lang=en [L,QSA]
 RewriteRule ^en/services/?$ services.php?lang=en [L,QSA]
@@ -43,6 +51,7 @@ RewriteRule ^en/legal/privacy/?$ legal/confidentialite.php?lang=en [L,QSA]
 
 RewriteRule ^pt/?$ index.php?lang=pt [L,QSA]
 RewriteRule ^pt/sobre/?$ about-me.php?lang=pt [L,QSA]
+RewriteRule ^pt/imprensa/?$ presse.php?lang=pt [L,QSA]
 RewriteRule ^pt/realizacoes/?$ realisations.php?lang=pt [L,QSA]
 RewriteRule ^pt/o-estudio/?$ studio.php?lang=pt [L,QSA]
 RewriteRule ^pt/servicos/?$ services.php?lang=pt [L,QSA]
@@ -58,6 +67,9 @@ RewriteRule ^pt/legal/privacidade/?$ legal/confidentialite.php?lang=pt [L,QSA]
 
 RewriteCond %{THE_REQUEST} \s/+[^?\s]*/about-me\.php[\s?] [NC]
 RewriteRule ^about-me\.php$ fr/a-propos [R=301,L,NC]
+RewriteCond %{THE_REQUEST} \s/+[^?\s]*/presse\.php[\s?] [NC]
+RewriteRule ^presse\.php$ fr/presse [R=301,L,NC]
+RewriteRule ^presse/?$ fr/presse [R=301,L,NC]
 RewriteCond %{THE_REQUEST} \s/+[^?\s]*/batinacedric\.php[\s?] [NC]
 RewriteRule ^batinacedric\.php$ fr/a-propos [R=301,L,NC]
 RewriteCond %{THE_REQUEST} \s/+[^?\s]*/(?:realisations|creations)\.php[\s?] [NC]

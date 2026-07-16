@@ -5,8 +5,21 @@ require_once __DIR__.'/includes/site.php';
 if(empty($_SESSION['artful_csrf']))$_SESSION['artful_csrf']=bin2hex(random_bytes(32));
 $a=random_int(2,9);$b=random_int(1,6);$_SESSION['captcha']=$a+$b;
 $allowed=['presse','conference','partenariat','mission','formation','autre'];$selected=in_array($_GET['motif']??'',$allowed,true)?$_GET['motif']:'';
-$meta=artful_page_meta(['title'=>(string)t('contact.title'),'description'=>(string)t('contact.description')]);
-?><!doctype html><html lang="<?= artful_locale() ?>"><head><?php artful_render_head($meta); ?></head><body><?php require __DIR__.'/includes/header.php'; ?><main id="main-content"><header class="page-hero"><div class="site-shell"><h1><?= artful_e((string)t('contact.heading')) ?></h1><p><?= artful_e((string)t('contact.lead')) ?></p></div></header><section class="section section--surface"><div class="site-shell contact-layout"><aside><h2><?= artful_e((string)t('contact.entries')) ?></h2><p>Press · Conference · Partnership · Digital project</p><p><a href="mailto:contact@artfulbatinacreativestudios.fr">contact@artfulbatinacreativestudios.fr</a></p></aside><form id="contact-form" class="form-card" action="/contact_handler.php" method="post"><input type="hidden" name="csrf_token" value="<?= artful_e($_SESSION['artful_csrf']) ?>"><input type="hidden" name="lang" value="<?= artful_locale() ?>"><div class="honeypot"><input name="website" tabindex="-1" autocomplete="off"></div>
+$meta=artful_page_meta(['title'=>(string)t('contact.title'),'description'=>(string)t('contact.description'),'portrait'=>'studio']);
+$jsonLd=artful_schema_graph([
+    artful_breadcrumb_jsonld([
+        ['name'=>'@rtful Batina Creative Studios','url'=>artful_absolute_route('home',artful_locale())],
+        ['name'=>(string)t('common.nav.contact'),'url'=>artful_absolute_route('contact',artful_locale())],
+    ]),
+    [
+        '@type'=>'ContactPage',
+        '@id'=>artful_absolute_route('contact',artful_locale()).'#contact',
+        'url'=>artful_absolute_route('contact',artful_locale()),
+        'name'=>(string)t('contact.title'),
+        'description'=>(string)t('contact.description'),
+    ],
+]);
+?><!doctype html><html lang="<?= artful_locale() ?>"><head><?php artful_render_head($meta,$jsonLd); ?></head><body><?php require __DIR__.'/includes/header.php'; ?><main id="main-content"><header class="page-hero page-hero--premium"><div class="site-shell"><p class="eyebrow"><?= artful_e((string)t('common.brand_name')) ?></p><h1><?= artful_e((string)t('contact.heading')) ?></h1><p class="hero-lead"><?= artful_e((string)t('contact.lead')) ?></p></div></header><section class="section section--surface"><div class="site-shell contact-layout"><aside><h2><?= artful_e((string)t('contact.entries')) ?></h2><p>Press · Conference · Partnership · Digital project</p><p><a href="<?= artful_e(artful_route('press')) ?>"><?= artful_e((string)t('common.press')) ?> →</a></p><p><a href="mailto:contact@artfulbatinacreativestudios.fr">contact@artfulbatinacreativestudios.fr</a></p></aside><form id="contact-form" class="form-card" action="/contact_handler.php" method="post"><input type="hidden" name="csrf_token" value="<?= artful_e($_SESSION['artful_csrf']) ?>"><input type="hidden" name="lang" value="<?= artful_locale() ?>"><div class="honeypot"><input name="website" tabindex="-1" autocomplete="off"></div>
 <div class="field"><label for="motif"><?= artful_e((string)t('contact.labels.type')) ?> *</label><select id="motif" name="motif" required><option value=""><?= artful_e((string)t('contact.labels.choose')) ?></option><?php foreach((array)t('contact.types') as $v=>$l): ?><option value="<?= artful_e($v) ?>"<?= $selected===$v?' selected':'' ?>><?= artful_e((string)$l) ?></option><?php endforeach; ?></select></div>
 <div class="grid grid-2"><div class="field"><label for="name"><?= artful_e((string)t('contact.labels.name')) ?> *</label><input id="name" name="name" required maxlength="120"></div><div class="field"><label for="organisation"><?= artful_e((string)t('contact.labels.organisation')) ?></label><input id="organisation" name="organisation" maxlength="160"></div></div>
 <div class="grid grid-2"><div class="field"><label for="email"><?= artful_e((string)t('contact.labels.email')) ?> *</label><input id="email" name="email" type="email" required maxlength="190"></div><div class="field"><label for="phone"><?= artful_e((string)t('contact.labels.phone')) ?></label><input id="phone" name="phone" type="tel" maxlength="40"></div></div>

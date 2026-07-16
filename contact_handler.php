@@ -16,6 +16,6 @@ if($name===''||!filter_var($email,FILTER_VALIDATE_EMAIL)||$subject===''||$messag
 if(!isset($_SESSION['captcha'])||$captcha!==(int)$_SESSION['captcha'])out(false,$m['captcha'],422);
 $clean=static fn(string $v):string=>str_replace(["\r","\n"],' ',strip_tags($v));
 $body="Language: {$lang}\nName: ".$clean($name)."\nOrganisation: ".$clean((string)($_POST['organisation']??''))."\nEmail: ".$clean($email)."\nPhone: ".$clean((string)($_POST['phone']??''))."\nType: ".$clean((string)($_POST['motif']??''))."\n\n".$message;
-$headers=['From: Artful Batina <contact@artfulbatinacreativestudios.fr>','Reply-To: '.$clean($email),'Content-Type: text/plain; charset=UTF-8'];
+$headers=['From: Artful Batina Creative Studios <contact@artfulbatinacreativestudios.fr>','Reply-To: '.$clean($email),'Content-Type: text/plain; charset=UTF-8'];
 if(!mail('contact@artfulbatinacreativestudios.fr','[Artful '.strtoupper($lang).'] '.$clean($subject),$body,implode("\r\n",$headers)))out(false,$m['send'],500);
 $_SESSION['artful_contact_last']=time();unset($_SESSION['captcha']);out(true,$m['success']);

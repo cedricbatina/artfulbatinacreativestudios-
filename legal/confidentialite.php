@@ -3,7 +3,7 @@ declare(strict_types=1);
 $GLOBALS['artful_route_name']='privacy';
 require_once dirname(__DIR__).'/includes/site.php';
 $title=(string)t('legal.privacy');
-$meta=artful_page_meta(['title'=>$title.' — Artful Batina','description'=>$title,'robots'=>'noindex, follow']);
+$meta=artful_page_meta(['title'=>$title.' — @rtful Batina Creative Studios','description'=>$title,'robots'=>'noindex, follow']);
 $sections=[
     'fr' => [
         '(\'Données collectées\', \'Le formulaire peut collecter votre nom, organisation, email, téléphone facultatif, type de demande, sujet et message.\')',

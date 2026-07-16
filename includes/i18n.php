@@ -57,6 +57,7 @@ function artful_locale_path(string $name, ?string $locale = null): string
         'resources' => ['fr' => 'ressources', 'en' => 'resources', 'pt' => 'recursos'],
         'technologies' => ['fr' => 'technologies', 'en' => 'technologies', 'pt' => 'tecnologias'],
         'method' => ['fr' => 'methode', 'en' => 'method', 'pt' => 'metodo'],
+        'press' => ['fr' => 'presse', 'en' => 'press', 'pt' => 'imprensa'],
         'contact' => ['fr' => 'contact', 'en' => 'contact', 'pt' => 'contacto'],
         'legal' => ['fr' => 'legal/mentions-legales', 'en' => 'legal/legal-notice', 'pt' => 'legal/aviso-legal'],
         'privacy' => ['fr' => 'legal/confidentialite', 'en' => 'legal/privacy', 'pt' => 'legal/privacidade'],

@@ -38,14 +38,15 @@ Cette livraison utilise le versionnage sémantique `MAJOR.MINOR.PATCH`.
 - `contact_handler.php`
 - `privacy.php`
 
-## Non modifiés
+## Legacy retiré du webroot (2026-07-15)
 
-- base de données et schéma ;
-- `database_connexion.php` ;
-- login/logout/profile ;
-- vendor/composer ;
-- uploads ;
-- `creation.php`.
+Ancien site 1.x (login/profile, PHPMailer, `send_mail.php`, etc.) déplacé vers :
+
+`C:\xampp\htdocs\_archive_artful_legacy_20260715`
+
+Site public 2.x : pages + `includes/` + `locales/` + `data/` + `css/` + `images/` + `legal/` + `contact_handler.php` (`mail()`).
+
+Conservés dans le webroot : redirections 301 (`batinacedric.php`, `creations.php`, `privacy.php`, `creation.php`) · `vendor/` (dotenv) · `composer.*`.
 
 ## Vérifications obligatoires avant production
 

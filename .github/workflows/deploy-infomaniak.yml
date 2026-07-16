@@ -1,0 +1,86 @@
+# Déploie Artful sur Infomaniak (FTP) à chaque push sur main — équivalent Vercel pour PHP.
+# Secrets requis : ARTFUL_FTP_SERVER, ARTFUL_FTP_USERNAME, ARTFUL_FTP_PASSWORD
+# Optionnel : ARTFUL_FTP_SERVER_DIR (dossier distant, ex. / ou /sites/xxx/web)
+name: Deploy Artful to Infomaniak
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+concurrency:
+  group: artful-infomaniak-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare production .htaccess
+        run: cp .htaccess.production .htaccess
+
+      - name: FTP deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.ARTFUL_FTP_SERVER }}
+          username: ${{ secrets.ARTFUL_FTP_USERNAME }}
+          password: ${{ secrets.ARTFUL_FTP_PASSWORD }}
+          port: 21
+          protocol: ftp
+          local-dir: ./
+          server-dir: ${{ secrets.ARTFUL_FTP_SERVER_DIR || './' }}
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git/**
+            **/.git*
+            **/.github/**
+            **/.env
+            **/.env.*
+            **/*.sql
+            **/logs/**
+            **/*.log
+            **/server.zip
+            **/abcstudios_full.sql
+            .htaccess.production
+            **/migrate-passwords.php
+            **/generate-slugs.php
+            **/install.php
+            **/.phpinfo.php
+            **/PHPMailer/**
+            **/uploads/**
+            **/src/**
+            **/confirmation*.php
+            **/contact_form.php
+            **/send_mail.php
+            **/mail_confirmation.php
+            **/login.php
+            **/logout.php
+            **/signup.php
+            **/profile.php*
+            **/private-access.php
+            **/database_connexion.php
+            **/header.php
+            **/footer.php
+            **/banner.php
+            **/functions.php
+            **/social_links.php
+            **/faq_contact.php
+
+      - name: Post-deploy smoke (routes presse)
+        run: |
+          set -euo pipefail
+          for url in \
+            "https://artfulbatinacreativestudios.fr/fr/" \
+            "https://artfulbatinacreativestudios.fr/fr/presse"
+          do
+            code="$(curl -sS -o /dev/null -w '%{http_code}' "$url")"
+            echo "$url -> HTTP $code"
+            if [ "$code" != "200" ]; then
+              echo "::error::Smoke test failed for $url (HTTP $code)"
+              exit 1
+            fi
+          done

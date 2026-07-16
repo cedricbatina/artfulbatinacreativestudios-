@@ -1,3 +1,17 @@
 User-agent: *
 Allow: /
+Disallow: /includes/
+Disallow: /locales/
+Disallow: /vendor/
+Disallow: /data/
+Disallow: /logs/
+Disallow: /*.sql$
+Disallow: /*.DISABLED*
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://www.artfulbatinacreativestudios.fr/sitemap.xml
