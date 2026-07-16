@@ -37,9 +37,9 @@ function artful_portrait_alt(string $key, ?string $locale = null): string
     $locale ??= artful_locale();
     $alts = [
         'studio' => [
-            'fr' => 'Cédric Batina, fondateur de @rtful Batina Creative Studios — portrait professionnel',
-            'en' => 'Cédric Batina, founder of @rtful Batina Creative Studios — professional portrait',
-            'pt' => 'Cédric Batina, fundador de @rtful Batina Creative Studios — retrato profissional',
+            'fr' => 'Cédric Batina',
+            'en' => 'Cédric Batina',
+            'pt' => 'Cédric Batina',
         ],
         'audience' => [
             'fr' => 'Cédric Batina dans le public — Déclics Numériques · écoute et échange',

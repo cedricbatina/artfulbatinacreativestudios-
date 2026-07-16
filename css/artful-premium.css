@@ -725,3 +725,60 @@ body.press-page .press-photo-card img {
     margin-top: 0.5rem;
   }
 }
+
+/* —— Hero portrait badge : nom court, centré, typo discrète —— */
+.hero-badge {
+  left: 50%;
+  right: auto;
+  bottom: 0.85rem;
+  transform: translateX(-50%);
+  max-width: calc(100% - 1.25rem);
+  padding: 0.35rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: 999px;
+}
+
+@media (max-width: 42rem) {
+  .hero-badge {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.68rem;
+    padding: 0.3rem 0.6rem;
+    bottom: 0.65rem;
+  }
+}
+
+/* —— Presse : cascade mobile après règles desktop (hotfix 2.2.8) —— */
+@media (max-width: 42rem) {
+  body.press-page .page-hero__grid {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: stretch;
+  }
+
+  body.press-page .page-hero .hero-portrait,
+  body.press-page .page-hero--premium .hero-portrait {
+    justify-self: center;
+    width: min(13.5rem, 70vw);
+    max-width: 13.5rem;
+    margin-top: 0.75rem;
+  }
+}
+
+@media (max-width: 30rem) {
+  body.press-page .press-photos-grid,
+  body.press-page .press-photos-grid--kit {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 15rem;
+  }
+
+  body.press-page .press-photo-card {
+    width: 100%;
+    max-width: 13rem;
+  }
+}

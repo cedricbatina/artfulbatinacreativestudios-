@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-const ARTFUL_VERSION = '2.2.7';
+const ARTFUL_VERSION = '2.2.8';
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
