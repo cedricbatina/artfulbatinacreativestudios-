@@ -57,7 +57,7 @@ $jsonLd = artful_schema_graph([
 ?><!doctype html>
 <html lang="<?= artful_locale() ?>">
 <head><?php artful_render_head($meta, $jsonLd); ?></head>
-<body>
+<body class="press-page">
 <?php require __DIR__ . '/includes/header.php'; ?>
 <main id="main-content"><?= $body ?></main>
 <?php require __DIR__ . '/includes/footer.php'; ?>
