@@ -292,7 +292,7 @@ function artful_expertise_cards(): string
 {
     $data = [
         'fr' => [
-            ['Ingénierie logicielle & architecture', 'Node.js, Nuxt, PHP, SQL, APIs, automatisations et produits multilingues.'],
+            ['Ingénierie logicielle & architecture', 'Java, C++, Node.js, Nuxt, PHP, SQL, APIs, automatisations et produits multilingues.'],
             ['Ingénierie pédagogique', 'Cours, leçons, exercices, jeux, vidéos et parcours longs.'],
             ['Ingénierie documentaire & édition', 'Livres, PDF, InDesign/JSX, HTML vers PDF et chaînes de publication.'],
             ['Langues & écritures', 'Kikongo classique, Lingala, Mandombé, Natikongo et données lexicales.'],
@@ -300,7 +300,7 @@ function artful_expertise_cards(): string
             ['Création & narration', 'Design, 3D, univers narratifs, identité visuelle et produits culturels.'],
         ],
         'en' => [
-            ['Software engineering & architecture', 'Node.js, Nuxt, PHP, SQL, APIs, automation and multilingual products.'],
+            ['Software engineering & architecture', 'Java, C++, Node.js, Nuxt, PHP, SQL, APIs, automation and multilingual products.'],
             ['Educational engineering', 'Courses, lessons, exercises, games, videos and long programmes.'],
             ['Document & publishing engineering', 'Books, PDF, InDesign/JSX, HTML-to-PDF and publishing workflows.'],
             ['Languages & writing systems', 'Classical Kikongo, Lingala, Mandombé, Natikongo and lexical data.'],
@@ -308,7 +308,7 @@ function artful_expertise_cards(): string
             ['Creation & storytelling', 'Design, 3D, narrative worlds, visual identity and cultural products.'],
         ],
         'pt' => [
-            ['Engenharia de software & arquitetura', 'Node.js, Nuxt, PHP, SQL, APIs, automações e produtos multilingues.'],
+            ['Engenharia de software & arquitetura', 'Java, C++, Node.js, Nuxt, PHP, SQL, APIs, automações e produtos multilingues.'],
             ['Engenharia pedagógica', 'Cursos, lições, exercícios, jogos, vídeos e percursos longos.'],
             ['Engenharia documental & edição', 'Livros, PDF, InDesign/JSX, HTML para PDF e fluxos editoriais.'],
             ['Línguas & escritas', 'Kikongo clássico, Lingala, Mandombé, Natikongo e dados lexicais.'],

@@ -1,6 +1,7 @@
-# Déploie Artful sur Infomaniak (FTP) à chaque push sur main — équivalent Vercel pour PHP.
-# Secrets requis : ARTFUL_FTP_SERVER, ARTFUL_FTP_USERNAME, ARTFUL_FTP_PASSWORD
-# Optionnel : ARTFUL_FTP_SERVER_DIR (dossier distant, ex. / ou /sites/xxx/web)
+# Déploie Artful sur Infomaniak (FTP) à chaque push sur main/master.
+# Secrets : ARTFUL_FTP_SERVER, ARTFUL_FTP_USERNAME, ARTFUL_FTP_PASSWORD
+# ARTFUL_FTP_SERVER_DIR = sites/artfulbatinacreativestudios.fr/
+#   (chemin réel vu dans les logs Infomaniak — PAS la racine FTP `/`)
 name: Deploy Artful to Infomaniak
 
 on:
@@ -10,7 +11,7 @@ on:
 
 concurrency:
   group: artful-infomaniak-deploy
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -23,6 +24,20 @@ jobs:
       - name: Prepare production .htaccess
         run: cp .htaccess.production .htaccess
 
+      - name: Resolve FTP server-dir
+        id: ftpdir
+        run: |
+          DIR="${{ secrets.ARTFUL_FTP_SERVER_DIR }}"
+          if [ -z "$DIR" ] || [ "$DIR" = "/" ] || [ "$DIR" = "./" ]; then
+            DIR="sites/artfulbatinacreativestudios.fr/"
+          fi
+          case "$DIR" in
+            */) ;;
+            *) DIR="${DIR}/" ;;
+          esac
+          echo "dir=$DIR" >> "$GITHUB_OUTPUT"
+          echo "Deploying into FTP server-dir: $DIR"
+
       - name: FTP deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
@@ -32,7 +47,7 @@ jobs:
           port: 21
           protocol: ftp
           local-dir: ./
-          server-dir: ${{ secrets.ARTFUL_FTP_SERVER_DIR || './' }}
+          server-dir: ${{ steps.ftpdir.outputs.dir }}
           dangerous-clean-slate: false
           exclude: |
             **/.git/**
@@ -46,13 +61,14 @@ jobs:
             **/server.zip
             **/abcstudios_full.sql
             .htaccess.production
+            **/vendor/**
+            **/PHPMailer/**
+            **/uploads/**
+            **/src/**
             **/migrate-passwords.php
             **/generate-slugs.php
             **/install.php
             **/.phpinfo.php
-            **/PHPMailer/**
-            **/uploads/**
-            **/src/**
             **/confirmation*.php
             **/contact_form.php
             **/send_mail.php
@@ -70,17 +86,26 @@ jobs:
             **/social_links.php
             **/faq_contact.php
 
-      - name: Post-deploy smoke (routes presse)
+      - name: Post-deploy smoke (contenu, pas seulement HTTP 200)
         run: |
           set -euo pipefail
-          for url in \
-            "https://artfulbatinacreativestudios.fr/fr/" \
-            "https://artfulbatinacreativestudios.fr/fr/presse"
-          do
-            code="$(curl -sS -o /dev/null -w '%{http_code}' "$url")"
-            echo "$url -> HTTP $code"
-            if [ "$code" != "200" ]; then
-              echo "::error::Smoke test failed for $url (HTTP $code)"
-              exit 1
-            fi
-          done
+          home="$(curl -sS "https://artfulbatinacreativestudios.fr/fr/")"
+          presse="$(curl -sS "https://artfulbatinacreativestudios.fr/fr/presse")"
+
+          echo "$home" | grep -q 'cedric-batina-studio' || {
+            echo "::error::Home still missing studio portrait path"
+            exit 1
+          }
+          echo "$home" | grep -q 'cedric-batina-founder.webp' && {
+            echo "::error::Home still serves old founder.webp hero"
+            exit 1
+          }
+          echo "$presse" | grep -q 'press\.body\|press\.title' && {
+            echo "::error::Presse still shows untranslated press.* keys — locales not live"
+            exit 1
+          }
+          echo "$presse" | grep -qi '<h1>Presse</h1>' || {
+            echo "::error::Presse page missing expected H1"
+            exit 1
+          }
+          echo "Smoke OK: home portrait + presse i18n"
