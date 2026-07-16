@@ -1,7 +1,6 @@
 # Déploie Artful sur Infomaniak (FTP) à chaque push sur main/master.
 # Secrets : ARTFUL_FTP_SERVER, ARTFUL_FTP_USERNAME, ARTFUL_FTP_PASSWORD
-# ARTFUL_FTP_SERVER_DIR = sites/artfulbatinacreativestudios.fr/
-#   (chemin réel vu dans les logs Infomaniak — PAS la racine FTP `/`)
+# Dossier cible fixe (logs Infomaniak) : sites/artfulbatinacreativestudios.fr/
 name: Deploy Artful to Infomaniak
 
 on:
@@ -24,20 +23,6 @@ jobs:
       - name: Prepare production .htaccess
         run: cp .htaccess.production .htaccess
 
-      - name: Resolve FTP server-dir
-        id: ftpdir
-        run: |
-          DIR="${{ secrets.ARTFUL_FTP_SERVER_DIR }}"
-          if [ -z "$DIR" ] || [ "$DIR" = "/" ] || [ "$DIR" = "./" ]; then
-            DIR="sites/artfulbatinacreativestudios.fr/"
-          fi
-          case "$DIR" in
-            */) ;;
-            *) DIR="${DIR}/" ;;
-          esac
-          echo "dir=$DIR" >> "$GITHUB_OUTPUT"
-          echo "Deploying into FTP server-dir: $DIR"
-
       - name: FTP deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
@@ -47,7 +32,7 @@ jobs:
           port: 21
           protocol: ftp
           local-dir: ./
-          server-dir: ${{ steps.ftpdir.outputs.dir }}
+          server-dir: sites/artfulbatinacreativestudios.fr/
           dangerous-clean-slate: false
           exclude: |
             **/.git/**
@@ -91,6 +76,7 @@ jobs:
           set -euo pipefail
           home="$(curl -sS "https://artfulbatinacreativestudios.fr/fr/")"
           presse="$(curl -sS "https://artfulbatinacreativestudios.fr/fr/presse")"
+          css="$(curl -sS "https://artfulbatinacreativestudios.fr/css/artful-premium.css?v=2.2.7")"
 
           echo "$home" | grep -q 'cedric-batina-studio' || {
             echo "::error::Home still missing studio portrait path"
@@ -101,11 +87,19 @@ jobs:
             exit 1
           }
           echo "$presse" | grep -q 'press\.body\|press\.title' && {
-            echo "::error::Presse still shows untranslated press.* keys — locales not live"
+            echo "::error::Presse still shows untranslated press.* keys"
             exit 1
           }
-          echo "$presse" | grep -qi '<h1>Presse</h1>' || {
-            echo "::error::Presse page missing expected H1"
+          echo "$presse" | grep -q 'press-page' || {
+            echo "::error::Presse body missing press-page class"
             exit 1
           }
-          echo "Smoke OK: home portrait + presse i18n"
+          echo "$presse" | grep -q '2\.2\.7' || {
+            echo "::error::Presse still on old asset version (want 2.2.7)"
+            exit 1
+          }
+          echo "$css" | grep -q 'body.press-page' || {
+            echo "::error::artful-premium.css missing press-page rules"
+            exit 1
+          }
+          echo "Smoke OK: home portrait + presse layout CSS 2.2.7"

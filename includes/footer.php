@@ -23,7 +23,7 @@
 <h2 class="footer-title"><?= artful_e((string)t('common.footer_ecosystem')) ?></h2>
 <ul class="footer-links">
 <li><a href="https://batina-media.com" target="_blank" rel="noopener">Batina Media ↗</a></li>
-<li><a href="https://batina-media.com/presse" target="_blank" rel="noopener"><?= artful_e((string)t('common.press')) ?> Batina Media ↗</a></li>
+<li><a href="https://batina-media.com/fr/presse" target="_blank" rel="noopener"><?= artful_e((string)t('common.press')) ?> Batina Media ↗</a></li>
 <li><a href="https://longoka.com" target="_blank" rel="noopener">Longoka ↗</a></li>
 <li><a href="https://lexikongo.fr" target="_blank" rel="noopener">Lexikongo ↗</a></li>
 <li><a href="https://madizi.com" target="_blank" rel="noopener">Madizi ↗</a></li>

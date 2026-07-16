@@ -432,6 +432,17 @@ body {
 
   .page-hero__grid {
     grid-template-columns: 1fr;
+    justify-items: stretch;
+  }
+
+  .page-hero .hero-portrait,
+  .page-hero--premium .hero-portrait,
+  body.press-page .page-hero .hero-portrait,
+  body.press-page .page-hero--premium .hero-portrait {
+    justify-self: center;
+    width: min(13.5rem, 70vw);
+    max-width: 13.5rem;
+    margin-top: 0.75rem;
   }
 }
 
@@ -474,24 +485,25 @@ body {
 
 .page-hero__grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: center;
+  grid-template-columns: minmax(0, 1.25fr) minmax(13rem, 15rem);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: start;
 }
 
 .page-hero .hero-portrait,
 .page-hero--premium .hero-portrait {
   position: relative;
   justify-self: end;
-  max-width: 18rem;
-  width: min(100%, 18rem);
+  width: 14.5rem;
+  max-width: min(14.5rem, 100%);
+  flex-shrink: 0;
 }
 
 .page-hero .hero-portrait img,
 .page-hero--premium .hero-portrait img {
   display: block;
   width: 100%;
-  max-height: 22rem;
+  max-height: 18rem;
   aspect-ratio: 4 / 5;
   height: auto;
   border-radius: var(--artful-radius-lg);
@@ -499,16 +511,21 @@ body {
 }
 
 /* Presse : hero + kit plus compacts (évite photos monumentales) */
+body.press-page .page-hero__grid {
+  grid-template-columns: minmax(0, 1.35fr) minmax(12rem, 14rem);
+  align-items: center;
+}
+
 body.press-page .page-hero .hero-portrait,
 body.press-page .page-hero--premium .hero-portrait {
-  max-width: 14.5rem;
-  width: min(100%, 14.5rem);
-  justify-self: center;
+  width: 13.5rem;
+  max-width: min(13.5rem, 100%);
+  justify-self: end;
 }
 
 body.press-page .page-hero .hero-portrait img,
 body.press-page .page-hero--premium .hero-portrait img {
-  max-height: 18rem;
+  max-height: 17rem;
 }
 
 body.press-page .press-photos-grid--kit {
