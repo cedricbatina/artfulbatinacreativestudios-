@@ -74,9 +74,10 @@ jobs:
       - name: Post-deploy smoke (contenu, pas seulement HTTP 200)
         run: |
           set -euo pipefail
+          VER="2.2.8"
           home="$(curl -sS "https://artfulbatinacreativestudios.fr/fr/")"
           presse="$(curl -sS "https://artfulbatinacreativestudios.fr/fr/presse")"
-          css="$(curl -sS "https://artfulbatinacreativestudios.fr/css/artful-premium.css?v=2.2.7")"
+          css="$(curl -sS "https://artfulbatinacreativestudios.fr/css/artful-premium.css?v=${VER}")"
 
           echo "$home" | grep -q 'cedric-batina-studio' || {
             echo "::error::Home still missing studio portrait path"
@@ -84,6 +85,10 @@ jobs:
           }
           echo "$home" | grep -q 'cedric-batina-founder.webp' && {
             echo "::error::Home still serves old founder.webp hero"
+            exit 1
+          }
+          echo "$home" | grep -q 'Cédric Batina · depuis 2011' || {
+            echo "::error::Home hero badge not updated"
             exit 1
           }
           echo "$presse" | grep -q 'press\.body\|press\.title' && {
@@ -94,12 +99,12 @@ jobs:
             echo "::error::Presse body missing press-page class"
             exit 1
           }
-          echo "$presse" | grep -q '2\.2\.7' || {
-            echo "::error::Presse still on old asset version (want 2.2.7)"
+          echo "$presse" | grep -q "${VER}" || {
+            echo "::error::Presse still on old asset version (want ${VER})"
             exit 1
           }
           echo "$css" | grep -q 'body.press-page' || {
             echo "::error::artful-premium.css missing press-page rules"
             exit 1
           }
-          echo "Smoke OK: home portrait + presse layout CSS 2.2.7"
+          echo "Smoke OK: home portrait + badge + presse CSS ${VER}"
